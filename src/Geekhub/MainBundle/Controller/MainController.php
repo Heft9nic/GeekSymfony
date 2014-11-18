@@ -13,8 +13,13 @@ class MainController extends Controller
      */
     public function indexAction($name)
     {
+        $twigArray = [
+            'key'  => 'value',
+            'test' => 'val',
+            'geek' => 'team',
+        ];
         $serviceResult = $this->get('my_simple_service')->returnServiceName();
 
-        return $this->render('GeekhubMainBundle:Main:index.html.twig', ['name' => $name, 'serviceResult' => $serviceResult]);
+        return $this->render('GeekhubMainBundle:Main:index.html.twig', ['name' => $name, 'serviceResult' => $serviceResult, 'twigArray' => $twigArray]);
     }
 }

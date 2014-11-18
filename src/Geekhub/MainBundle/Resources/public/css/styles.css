@@ -1,0 +1,12 @@
+#page {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#header {
+    background-color: #999;
+}
+
+#footer {
+    text-align: center;
+}
