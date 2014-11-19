@@ -19,7 +19,13 @@ class MainController extends Controller
             'geek' => 'team',
         ];
         $serviceResult = $this->get('my_simple_service')->returnServiceName();
+        $time = time();
 
-        return $this->render('GeekhubMainBundle:Main:index.html.twig', ['name' => $name, 'serviceResult' => $serviceResult, 'twigArray' => $twigArray]);
+        return $this->render('GeekhubMainBundle:Main:index.html.twig', [
+            'name' => $name,
+            'serviceResult' => $serviceResult,
+            'twigArray' => $twigArray,
+            'time' => $time,
+        ]);
     }
 }
