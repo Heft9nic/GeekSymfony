@@ -1,0 +1,3 @@
+welcome_page:
+    path: /hello/{name}
+    defaults: { _controller: GeekhubMainBundle:Main:index, name: World }
