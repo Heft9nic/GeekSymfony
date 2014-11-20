@@ -1,25 +1,12 @@
 {% extends 'GeekhubMainBundle::layout.html.twig' %}
 
-{% block stylesheets %}
-    <link type="text/css" rel="stylesheet" href="{{ asset("bundles/geekhubmain/css/styles.css") }}"/>
-{% endblock %}
+{% block content %}
+    <h1>Hello, {{ name }}!</h1>
+    <h3>{{ serviceResult }}</h3>
 
-{% block body %}
-    <div id="page">
-        <div id="header">
-            <h1>Hello, {{ name }}!</h1>
-        </div>
-        <div id="body">
-            <h3>{{ serviceResult }}</h3>
-
-            <ul>
-                <li>{{ twigArray.key }}</li>
-                <li>{{ twigArray.test }}</li>
-                <li>{{ twigArray.geek }}</li>
-            </ul>
-        </div>
-        <div id="footer">
-            <p>Create by Company.@</p>
-        </div>
-    </div>
+    <ul>
+        <li>{{ twigArray.key }}</li>
+        <li>{{ twigArray.test }}</li>
+        <li>{{ twigArray.geek }}</li>
+    </ul>
 {% endblock %}
