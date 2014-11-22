@@ -24,6 +24,7 @@ class MainController extends Controller
     }
 
     /**
+     * Show all posts of application
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showPostsAction()
@@ -34,6 +35,7 @@ class MainController extends Controller
     }
 
     /**
+     * Show specific post bu Id
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -46,6 +48,7 @@ class MainController extends Controller
 
 
     /**
+     * Render template where testing some twig features
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function testTwigAction()
