@@ -1,0 +1,33 @@
+{% extends 'GeekhubMainBundle::layout.html.twig' %}
+
+{% set comments = [
+    {'author': 'john Patel', 'comment_body': 'First comment body', 'date': '2 Aug 2013'},
+    {'author': 'piter Johnes', 'comment_body': 'Comment', 'date': '2 Aug 2013'},
+    {'author': 'daniel Defo', 'comment_body': 'Hello World!', 'date': '2 Aug 2013' },
+] %}
+
+{% set username = 'John'%}
+{% set userStatus = 'logged'%}
+
+{% block content %}
+
+    {% import 'GeekhubMainBundle:Main:macros.html.twig' as macros %}
+
+    {{ username ~ " is " ~ userStatus|upper}}
+
+    {{ macros.testMacros(1,"MacrosTest", "MacrosContext") }}
+
+    {% for key,comment in comments %}
+        <div id="comment">
+            Comment #{{ key+1 }}
+            {{ comment.author|title }}
+            {{ comment.comment_body|lower }}
+            {{ comment.date|date }}
+        </div>
+    {% endfor %}
+
+    {% for i in 0..2 %}
+        <p>This text will be outputs three times!</p>
+    {% endfor %}
+
+{% endblock %}
