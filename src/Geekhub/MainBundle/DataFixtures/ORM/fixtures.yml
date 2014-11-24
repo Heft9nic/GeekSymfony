@@ -1,0 +1,24 @@
+Geekhub\MainBundle\Entity\Post:
+    post0:
+        title: test0
+        content: Test0
+    post1:
+        title: test1
+        content: Test1
+    post2:
+        title: test2
+        content: Test2
+
+Geekhub\MainBundle\Entity\Comment:
+    comment0:
+        title: test0
+        content: Test0
+        post: @post0
+    comment1:
+        title: test1
+        content: Test1
+        post: @post0
+    comment2:
+        title: test2
+        content: Test2
+        post: @post0

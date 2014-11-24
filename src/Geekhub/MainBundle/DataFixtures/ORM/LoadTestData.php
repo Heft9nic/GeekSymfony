@@ -7,9 +7,6 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Geekhub\MainBundle\Entity\Post;
-use Geekhub\MainBundle\Entity\Comment;
-
 
 class LoadTestData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
@@ -26,22 +23,10 @@ class LoadTestData implements FixtureInterface, OrderedFixtureInterface, Contain
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 3; $i++) {
-            $post  = new Post();
-            $post->setTitle('Post ' . $i . ' title');
-            $post->setContent('Post ' . $i . ' content');
-            $manager->persist($post);
-            if ($i == 1) {
-                for ($j = 1; $j < 3; $j++) {
-                    $comment = new Comment();
-                    $comment->setPost($post);
-                    $comment->setTitle('Comment ' . $j . ' title');
-                    $comment->setContent('Test ' . $j . 'comment');
-                    $manager->persist($comment);
-                }
-            }
-        }
-        $manager->flush();
+        $loader = new \Nelmio\Alice\Loader\Yaml();
+        $objects = $loader->load(__DIR__.'/fixtures.yml');
+        $persister = new \Nelmio\Alice\ORM\Doctrine($manager);
+        $persister->persist($objects);
     }
 
     /**
