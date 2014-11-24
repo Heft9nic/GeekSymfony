@@ -52,7 +52,6 @@ class MainController extends Controller
         return $this->render('GeekhubMainBundle:Main:showPost.html.twig', ['post' => $post]);
     }
 
-
     /**
      * Render template where testing some twig features
      * @return \Symfony\Component\HttpFoundation\Response
