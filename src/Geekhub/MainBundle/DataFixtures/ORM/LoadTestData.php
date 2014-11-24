@@ -5,10 +5,9 @@ namespace Geekhub\MainBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadTestData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
+class LoadTestData implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**
