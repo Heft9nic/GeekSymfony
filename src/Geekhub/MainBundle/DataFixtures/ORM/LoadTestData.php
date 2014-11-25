@@ -6,15 +6,25 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class LoadTestData implements FixtureInterface, OrderedFixtureInterface
+class LoadTestData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
 
     /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
      * @param ContainerInterface $container
+     * @return $this
      */
     public function setContainer(ContainerInterface $container = null)
     {
+        $this->container = $container;
+
+        return $this;
     }
 
     /**
@@ -22,10 +32,8 @@ class LoadTestData implements FixtureInterface, OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $loader = new \Nelmio\Alice\Loader\Yaml();
-        $objects = $loader->load(__DIR__.'/fixtures.yml');
-        $persister = new \Nelmio\Alice\ORM\Doctrine($manager);
-        $persister->persist($objects);
+        $loader = $this->container->get('hautelook_alice.loader');
+        $loader->load([__DIR__.'/fixtures.yml']);
     }
 
     /**

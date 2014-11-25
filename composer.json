@@ -19,6 +19,7 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "hautelook/alice-bundle": "~0.2",
         "nelmio/alice": "~1.7"
     },
     "require-dev": {
