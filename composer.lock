@@ -4,7 +4,11 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "hash": "b7d67f55a62fd151c84165925e785b7c",
+=======
+    "hash": "df70f824c06c3e06ebda773b28853b9f",
+>>>>>>> master
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -778,6 +782,7 @@
             "time": "2014-06-04 14:43:02"
         },
         {
+<<<<<<< HEAD
             "name": "hautelook/alice-bundle",
             "version": "0.2",
             "source": {
@@ -836,6 +841,8 @@
             "time": "2014-10-19 05:10:40"
         },
         {
+=======
+>>>>>>> master
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.0",
             "target-dir": "Incenteev/ParameterHandler",
