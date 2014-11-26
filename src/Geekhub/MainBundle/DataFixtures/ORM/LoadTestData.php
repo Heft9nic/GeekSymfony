@@ -5,20 +5,26 @@ namespace Geekhub\MainBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Geekhub\MainBundle\Entity\Post;
-use Geekhub\MainBundle\Entity\Comment;
-
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 class LoadTestData implements FixtureInterface, OrderedFixtureInterface, ContainerAwareInterface
 {
 
     /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
      * @param ContainerInterface $container
+     * @return $this
      */
     public function setContainer(ContainerInterface $container = null)
     {
+        $this->container = $container;
+
+        return $this;
     }
 
     /**
@@ -26,22 +32,8 @@ class LoadTestData implements FixtureInterface, OrderedFixtureInterface, Contain
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 3; $i++) {
-            $post  = new Post();
-            $post->setTitle('Post ' . $i . ' title');
-            $post->setContent('Post ' . $i . ' content');
-            $manager->persist($post);
-            if ($i == 1) {
-                for ($j = 1; $j < 3; $j++) {
-                    $comment = new Comment();
-                    $comment->setPost($post);
-                    $comment->setTitle('Comment ' . $j . ' title');
-                    $comment->setContent('Test ' . $j . 'comment');
-                    $manager->persist($comment);
-                }
-            }
-        }
-        $manager->flush();
+        $loader = $this->container->get('hautelook_alice.loader');
+        $loader->load([__DIR__.'/fixtures.yml']);
     }
 
     /**

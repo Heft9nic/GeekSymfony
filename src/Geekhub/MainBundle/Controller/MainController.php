@@ -41,7 +41,7 @@ class MainController extends Controller
     }
 
     /**
-     * Show specific post bu Id
+     * Show specific post by Id
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -58,6 +58,8 @@ class MainController extends Controller
      */
     public function testTwigAction()
     {
-        return $this->render('GeekhubMainBundle:Main:testTwig.html.twig');
+        $comments = $this->getDoctrine()->getRepository('GeekhubMainBundle:Comment')->findAll();
+
+        return $this->render('GeekhubMainBundle:Main:testTwig.html.twig', ['comments' => $comments]);
     }
 }
