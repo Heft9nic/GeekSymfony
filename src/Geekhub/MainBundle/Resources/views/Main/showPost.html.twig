@@ -1,0 +1,30 @@
+{% extends 'GeekhubMainBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Post #{{ post.id }}</h1>
+
+    <div id="posts">
+        <div id="post">
+            <h3>{{ post.title }}</h3>
+
+            <p>{{ post.content }}</p>
+
+            <p>{{ post.date|date }}</p>
+
+        </div>
+
+        <div id="comments">
+            <h3>Comments to this post</h3>
+            <small>Total comments: {{ post.comments|length }}</small>
+            {% for comment in post.comments %}
+                <div id="comment">
+                    <h4>{{ comment.title }}</h4>
+
+                    <p>{{ comment.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}
