@@ -1,0 +1,7 @@
+{% macro testMacros(condition, value, text) %}
+    {% if condition == 1 %}
+        <p>{{ value }}</p>
+    {% else %}
+        <p>{{ text }}</p>
+    {% endif %}
+{% endmacro %}

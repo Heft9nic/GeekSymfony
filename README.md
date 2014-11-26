@@ -13,5 +13,8 @@ php app/console cache:clear
 3) Get dependencies using composer
 php composer.phar install(update)
 
-4) Run application in browser
+3) Load fixtures
+php app/console doctrine:fixtures:load
+
+5) Run application in browser
 localhost/GeekSymfony/web/app_dev.php/hello/{slug}

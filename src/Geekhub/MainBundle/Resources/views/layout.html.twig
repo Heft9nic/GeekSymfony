@@ -1,9 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ asset("bundles/geekhubmain/css/styles.css") }}"/>
 {% endblock %}
 
 {% block body %}
+    <div id="page">
+
+        <div id="header">
+            <h1><a href="{{ path('welcome_page') }}">Symfony2 application</a></h1>
+        </div>
+
+        <div id="mainmenu">
+            {% block mainmenu %}
+                <ul id="menu">
+                    <li><a href="{{ path('welcome_page') }}">Main</a></li>
+                    <li><a href="{{ path('show_posts') }}">Posts(Doctrine)</a></li>
+                    <li><a href="{{ path('test_twig') }}">Twig(Twig Examples)</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+
+        <div id="body">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div id="footer">
+            <p>Created by MyCompany. 2014</p>
+        </div>
+
+    </div>
 {% endblock %}
 
 {% block javascripts %}

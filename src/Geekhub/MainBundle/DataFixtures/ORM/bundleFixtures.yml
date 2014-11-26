@@ -1,0 +1,27 @@
+Geekhub\MainBundle\Entity\Post:
+    post3:
+        title: bundleFixtures
+        content: <text($maxNbChars = 100)>
+        date: <date()>
+    post4:
+        title: <sentence($nbWords = 6)>
+        content: <text($maxNbChars = 100)>
+        date: <date()>
+    post5:
+        title: <sentence($nbWords = 6)>
+        content: Test2
+        date: <date()>
+
+Geekhub\MainBundle\Entity\Comment:
+    comment3:
+        title: test0
+        content: Test0
+        post: @post4
+    comment4:
+        title: test1
+        content: Test1
+        post: @post5
+    comment5:
+        title: test2
+        content: Test2
+        post: @post3

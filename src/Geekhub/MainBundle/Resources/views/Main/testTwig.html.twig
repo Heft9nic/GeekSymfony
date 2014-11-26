@@ -1,0 +1,27 @@
+{% extends 'GeekhubMainBundle::layout.html.twig' %}
+
+{% set username = 'John'%}
+{% set userStatus = 'logged'%}
+
+{% block content %}
+
+    {% import 'GeekhubMainBundle:Main:macros.html.twig' as macros %}
+
+    {{ username ~ " is " ~ userStatus|upper}}
+
+    {{ macros.testMacros(1,"MacrosTest", "MacrosContext") }}
+
+    {% for key,comment in comments %}
+        <div id="comment">
+            Comment #{{ key+1 }}
+            {{ comment.title|title }}
+            {{ comment.content|lower }}
+            {{ comment.date|date }}
+        </div>
+    {% endfor %}
+
+    {% for i in 0..2 %}
+        <p>This text will be shown three times!</p>
+    {% endfor %}
+
+{% endblock %}

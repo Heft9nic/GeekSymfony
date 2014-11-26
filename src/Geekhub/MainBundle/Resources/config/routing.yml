@@ -1,3 +1,15 @@
 welcome_page:
     path: /hello/{name}
     defaults: { _controller: GeekhubMainBundle:Main:index, name: World }
+
+show_posts:
+    path: /posts
+    defaults: { _controller: GeekhubMainBundle:Main:showPosts }
+
+show_post:
+    path: /post/{id}
+    defaults: { _controller: GeekhubMainBundle:Main:showPost, id:0 }
+
+test_twig:
+    path: /twig
+    defaults: { _controller: GeekhubMainBundle:Main:testTwig }
