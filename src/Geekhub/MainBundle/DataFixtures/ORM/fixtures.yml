@@ -1,3 +1,11 @@
+Geekhub\MainBundle\Entity\Tag:
+    tag0:
+        tagName: news
+        posts: [@post0, @post1]
+    tag1:
+        tagName: fun
+        posts: [@post2]
+
 Geekhub\MainBundle\Entity\Post:
     post0:
         title: fixtures

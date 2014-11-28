@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Post Entity
  *
  * @ORM\Table(name="geekhub_comments")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Entity\CommentRepository")
  */
 class Comment
 {
@@ -35,7 +35,7 @@ class Comment
     private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comment", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments", cascade={"persist"})
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
     private $post;

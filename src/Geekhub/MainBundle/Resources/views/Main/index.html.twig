@@ -1,12 +1,31 @@
 {% extends 'GeekhubMainBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello, {{ name }}!</h1>
-    <h3>{{ serviceResult }}</h3>
 
-    <ul>
-        <li>{{ twigArray.key }}</li>
-        <li>{{ twigArray.test }}</li>
-        <li>{{ twigArray.geek }}</li>
-    </ul>
+    <h1>Main page</h1>
+
+    <div id="lastPosts">
+        <h2>Last posts</h2>
+        {% for post in posts %}
+            <div id="post">
+                <h4>{{ post.title }}</h4>
+
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <br/>
+
+    <div id="lastComments">
+        <h2>Last comments</h2>
+        {% for comment in comments %}
+            <div id="comment">
+                <h4>{{ comment.title }}</h4>
+
+                <p>{{ comment.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

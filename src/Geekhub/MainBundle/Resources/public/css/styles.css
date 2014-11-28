@@ -30,3 +30,11 @@
 #menu li:hover {
     background-color: chartreuse;
 }
+
+#tag {
+    float: left;
+    padding: 10px 10px;
+    background-color: goldenrod;
+    margin-left: 5px;
+    height: 10px;
+}

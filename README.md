@@ -5,16 +5,13 @@ Welcome to the my first Symfony2 project
 
 1) Installing the project
 Clone repository to your local machine, using command:
-git clone https://github.com/NovikovViktor/GeekSymfony.git (SSH: git@github.com:NovikovViktor/GeekSymfony.git)
+`git clone https://github.com/NovikovViktor/GeekSymfony.git (SSH: git@github.com:NovikovViktor/GeekSymfony.git)`
 
-2) Create clear cache using command below & change your permissions
-php app/console cache:clear
-
-3) Get dependencies using composer
+2) Get dependencies using composer
 php composer.phar install(update)
 
-3) Load fixtures
-php app/console doctrine:fixtures:load
+3) Reload project(or run migrations and clear cache, install assets manually)
+php app/reload.php
 
-5) Run application in browser
-localhost/GeekSymfony/web/app_dev.php/hello/{slug}
+4) Run application in browser
+localhost/GeekSymfony/web/app_dev.php/
