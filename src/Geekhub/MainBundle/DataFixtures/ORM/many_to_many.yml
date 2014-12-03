@@ -1,0 +1,13 @@
+Geekhub\MainBundle\Entity\Detail:
+    detail0:
+        name: twig
+    detail1:
+        name: bundle
+    detail2:
+        name: doctrine
+        needFor: [@detail1, @detail3]
+        neededTo: [@detail0]
+    detail3:
+        name: fixtures
+        needFor: [@detail0, @detail1]
+        neededTo: [@detail2]

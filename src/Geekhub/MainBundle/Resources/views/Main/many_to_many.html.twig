@@ -1,0 +1,20 @@
+{% extends 'GeekhubMainBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <h1>Many To Many relation (self referencing)</h1>
+
+    <div id="details">
+        <h2>Details</h2>
+        {% for detail in details %}
+            <div id="detail">
+                <h4>{{ detail.name }}</h4>
+
+                <p>This detail need for: {{ detail.needFor|length }} details</p>
+
+                <p>This detail require: {{ detail.neededTo|length }} details</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

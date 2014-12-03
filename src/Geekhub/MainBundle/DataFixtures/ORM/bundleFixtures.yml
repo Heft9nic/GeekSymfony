@@ -1,3 +1,11 @@
+Geekhub\MainBundle\Entity\Tag:
+    tag0:
+        tagName: pets
+        posts: [@post4, @post5]
+    tag1:
+        tagName: science
+        posts: [@post3, @post5]
+
 Geekhub\MainBundle\Entity\Post:
     post3:
         title: bundleFixtures
@@ -8,7 +16,7 @@ Geekhub\MainBundle\Entity\Post:
         content: <text($maxNbChars = 100)>
         date: <date()>
     post5:
-        title: <sentence($nbWords = 6)>
+        title: POST5
         content: Test2
         date: <date()>
 

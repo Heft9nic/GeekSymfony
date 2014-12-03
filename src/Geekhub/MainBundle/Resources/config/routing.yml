@@ -1,6 +1,10 @@
 welcome_page:
+    path: /
+    defaults: { _controller: GeekhubMainBundle:Main:index }
+
+first_page:
     path: /hello/{name}
-    defaults: { _controller: GeekhubMainBundle:Main:index, name: World }
+    defaults: { _controller: GeekhubMainBundle:Main:first, name: World }
 
 show_posts:
     path: /posts
@@ -13,3 +17,7 @@ show_post:
 test_twig:
     path: /twig
     defaults: { _controller: GeekhubMainBundle:Main:testTwig }
+
+many_to_many:
+    path: /many_to_many
+    defaults: { _controller: GeekhubMainBundle:Main:manyToMany }

@@ -9,10 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
  * Post Entity
  *
  * @ORM\Table(name="geekhub_posts")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Entity\PostRepository")
  */
 class Post
 {
+
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -40,10 +41,16 @@ class Post
      */
     private $comments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="posts")
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->date = new \DateTime();
         $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -129,5 +136,24 @@ class Post
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * @param Tag $tag
+     * @return $this
+     */
+    public function addTag(Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
