@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: doctrine_extensions.yml }
 
 framework:
     #esi:             ~
@@ -58,10 +59,16 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            tree: true
+            timestampable: true # not needed: listeners are not enabled by default
 
 # Swiftmailer Configuration
 swiftmailer:

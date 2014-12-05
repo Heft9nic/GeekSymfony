@@ -1,6 +1,7 @@
 {% extends 'GeekhubMainBundle::layout.html.twig' %}
 
 {% block content %}
+    <a href="{{ path('post_create') }}">Add post</a>
     <h1>Posts</h1>
 
     <small>Total posts: {{ posts|length }}</small>
@@ -12,9 +13,11 @@
 
                 <p>{{ post.content }}</p>
 
-                <p>{{ post.date|date }}</p>
+                <p>Created at: {{ post.createdAt|date }}</p>
 
-                <a href="{{ path('show_post', {'id' : post.id}) }}">Read more</a>
+                <p>Updated at:{{ post.updatedAt|date }}</p>
+
+                <a href="{{ path('show_post', {'slug_title' : post.slugTitle}) }}">Read more</a>
 
                 <small>Total comments: {{ post.comments|length }}</small>
             </div>

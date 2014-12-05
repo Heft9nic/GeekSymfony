@@ -3,17 +3,35 @@
 {% block content %}
 <h1>Post #{{ post.id }}</h1>
 
+    <a href="{{ path('post_update', {'slug_title': post.slugTitle}) }}">Update this post</a>
+
 <div id="posts">
     <div id="post">
         <h3>{{ post.title }}</h3>
 
         <p>{{ post.content }}</p>
 
-        <p>{{ post.date|date }}</p>
+        <p>Created at: {{ post.createdAt|date }}</p>
+
+        <p>Updated at: {{ post.updatedAt|date }}</p>
 
     </div>
 
+    <div id="tags">
+        {% for tag in post.tags %}
+            <div id="tag">
+                <span>{{ tag.tagName }}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+    <br />
+
     <div id="comments">
+        <h3>Create comment:</h3>
+        <div id="comment_form">
+            {{ form(form) }}
+        </div>
         <h3>Comments to this post</h3><small>Total comments: {{ post.comments|length }}</small>
         {% for comment in post.comments %}
             <div id="comment">
@@ -21,14 +39,6 @@
 
                 <p>{{ comment.content }}</p>
             </div>
-        {% endfor %}
-    </div>
-
-    <div id="tags">
-        {% for tag in post.tags %}
-        <div id="tag">
-            <span>{{ tag.tagName }}</span>
-        </div>
         {% endfor %}
     </div>
 

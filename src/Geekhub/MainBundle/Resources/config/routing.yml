@@ -1,3 +1,4 @@
+# MainController routes
 welcome_page:
     path: /
     defaults: { _controller: GeekhubMainBundle:Main:index }
@@ -6,14 +7,6 @@ first_page:
     path: /hello/{name}
     defaults: { _controller: GeekhubMainBundle:Main:first, name: World }
 
-show_posts:
-    path: /posts
-    defaults: { _controller: GeekhubMainBundle:Main:showPosts }
-
-show_post:
-    path: /post/{id}
-    defaults: { _controller: GeekhubMainBundle:Main:showPost, id:0 }
-
 test_twig:
     path: /twig
     defaults: { _controller: GeekhubMainBundle:Main:testTwig }
@@ -21,3 +14,20 @@ test_twig:
 many_to_many:
     path: /many_to_many
     defaults: { _controller: GeekhubMainBundle:Main:manyToMany }
+
+# PostController routes
+posts_index:
+    path: /posts
+    defaults: { _controller: GeekhubMainBundle:Post:index }
+
+post_create:
+    path: /posts/create
+    defaults: { _controller: GeekhubMainBundle:Post:create }
+
+post_update:
+    path: /posts/update/{slug_title}
+    defaults: { _controller: GeekhubMainBundle:Post:update, slug_title: 0 }
+
+show_post:
+    path: /post/{slug_title}
+    defaults: { _controller: GeekhubMainBundle:Post:show, slug_title:0 }
