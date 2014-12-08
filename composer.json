@@ -23,7 +23,6 @@
         "doctrine/doctrine-migrations-bundle": "2.1.*@dev",
         "hautelook/alice-bundle": "~0.2",
         "nelmio/alice": "~1.7",
-        "gedmo/doctrine-extensions": "dev-master",
         "stof/doctrine-extensions-bundle": "1.2.*@dev"
     },
     "require-dev": {
