@@ -4,6 +4,8 @@ namespace Geekhub\MainBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Post Entity
@@ -23,18 +25,36 @@ class Post
 
     /**
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Title value should not be blank")
+     * @Assert\Length(min=8, minMessage = "This value should be longer than 8 chars")
      */
     private $title;
 
     /**
      * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotBlank(message="This value should not be blank")
+     * @Assert\Length(min=18, minMessage = "This value should be longer than 18 chars")
      */
     private $content;
 
     /**
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="slug_title", type="string", length=255, nullable=true)
+     * @Gedmo\Slug(fields={"title"}, updatable=true, separator="_")
      */
-    private $date;
+    private $slug_title;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+
+    protected $createdAt;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    protected $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"persist"})
@@ -42,13 +62,17 @@ class Post
     private $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="posts")
+     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="posts", cascade={"persist"})
      */
     private $tags;
 
+    /**
+     * @var
+     */
+    private $tagList;
+
     public function __construct()
     {
-        $this->date = new \DateTime();
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
     }
@@ -100,22 +124,19 @@ class Post
     }
 
     /**
-     * @param \DateTime $date
-     * @return $this
+     * @return \DateTime
      */
-    public function setDate(\DateTime $date)
+    public function getCreatedAt()
     {
-        $this->date = $date;
-
-        return $this;
+        return $this->createdAt;
     }
 
     /**
      * @return \DateTime
      */
-    public function getDate()
+    public function getUpdatedAt()
     {
-        return $this->date;
+        return $this->updatedAt;
     }
 
     /**
@@ -156,4 +177,43 @@ class Post
     {
         return $this->tags;
     }
+
+    /**
+     * @param $slug_title
+     * @return $this
+     */
+    public function setSlugTitle($slug_title)
+    {
+        $this->slug_title = $slug_title;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlugTitle()
+    {
+        return $this->slug_title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTagList()
+    {
+        return $this->tagList;
+    }
+
+    /**
+     * @param $tagList
+     * @return $this
+     */
+    public function setTagList($tagList)
+    {
+        $this->tagList = $tagList;
+
+        return $this;
+    }
+
 }

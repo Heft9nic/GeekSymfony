@@ -3,6 +3,7 @@
 namespace Geekhub\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post Entity
@@ -21,11 +22,15 @@ class Comment
 
     /**
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="This value should not be blank")
+     * @Assert\Length(min=8, minMessage = "This value should be longer than 8 chars")
      */
     private $title;
 
     /**
      * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotBlank(message="This value should not be blank")
+     * @Assert\Length(min=18, minMessage = "This value should be longer than 18 chars")
      */
     private $content;
 

@@ -1,0 +1,7 @@
+{% extends 'GeekhubMainBundle::layout.html.twig' %}
+
+{% block content %}
+    <form action="{{ path('post_create') }}" method="post">
+        {{ form_widget(form) }}
+    </form>
+{% endblock %}
