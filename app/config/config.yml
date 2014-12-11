@@ -70,6 +70,12 @@ stof_doctrine_extensions:
             tree: true
             timestampable: true # not needed: listeners are not enabled by default
 
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
