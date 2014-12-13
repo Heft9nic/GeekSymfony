@@ -3,9 +3,29 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+
         <service id="my_simple_service" class="Geekhub\MainBundle\Services\SimpleService">
             <argument type="service" id="request_stack"/>
         </service>
+
+        <service id="geekhub.menu_builder" class="Geekhub\MainBundle\Menu\Builder">
+            <argument type="service" id="knp_menu.factory"/>
+        </service>
+
+        <service id="geekhub.menu.main" class="Knp\Menu\MenuItem"
+                 factory-service="geekhub.menu_builder"
+                 factory-method="createMainMenu" scope="request">
+            <argument type="service" id="request"/>
+            <tag name="knp_menu.menu" alias="main"/>
+        </service>
+
+        <service id="geekhub.db_worker" class="Geekhub\MainBundle\Services\DbWorkerService">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
+        <service id="geekhub.form.type.comment" class="Geekhub\MainBundle\Form\Type\CommentType">
+        </service>
+
     </services>
 
 </container>

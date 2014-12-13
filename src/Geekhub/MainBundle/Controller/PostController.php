@@ -45,9 +45,7 @@ class PostController extends Controller
                 $tag->addPost($post);
                 $post->addTag($tag);
             }
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-            $em->flush();
+            $this->get('geekhub.db_worker')->simpleCommit($post, true);
 
             return $this->redirect($this->generateUrl('show_post', ['slug_title' => $post->getSlugTitle()]));
         }
@@ -68,9 +66,7 @@ class PostController extends Controller
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-            $em->flush();
+            $this->get('geekhub.db_worker')->simpleCommit($post, true);
 
             return $this->redirect($this->generateUrl('show_post', ['slug_title' => $post->getSlugTitle()]));
         }
@@ -89,13 +85,11 @@ class PostController extends Controller
     {
         $post = $this->getDoctrine()->getRepository('GeekhubMainBundle:Post')->findOneBy(['slug_title' => $slug_title]);
         $comment = new Comment();
-        $commentForm = $this->createForm(new CommentType(), $comment);
+        $commentForm = $this->createForm($this->get('geekhub.form.type.comment'), $comment);
         $commentForm->handleRequest($request);
         if ($commentForm->isValid()) {
             $comment->setPost($post);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
+            $this->get('geekhub.db_worker')->simpleCommit($comment, true);
         }
 
         return $this->render('GeekhubMainBundle:Post:show.html.twig', ['post' => $post, 'form' => $commentForm->createView()]);

@@ -1,5 +1,5 @@
 {% extends 'GeekhubMainBundle::layout.html.twig' %}
 
 {% block content %}
-    {{ form(form) }}
+    {% include "GeekhubMainBundle:Post:_form.html.twig" %}
 {% endblock %}
