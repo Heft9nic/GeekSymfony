@@ -8,10 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Post Entity
- *
  * @ORM\Table(name="geekhub_posts")
- * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Entity\PostRepository")
+ * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Repository\PostRepository")
  */
 class Post
 {

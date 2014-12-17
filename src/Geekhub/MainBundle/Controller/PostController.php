@@ -5,7 +5,6 @@ namespace Geekhub\MainBundle\Controller;
 use Geekhub\BaseBundle\Controller\BaseController;
 use Geekhub\MainBundle\Entity\Comment;
 use Geekhub\MainBundle\Entity\Post;
-use Geekhub\MainBundle\Entity\Tag;
 use Geekhub\MainBundle\Form\Type\PostType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -24,8 +23,6 @@ class PostController extends BaseController
     }
 
     /**
-     * Create post
-     *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -35,15 +32,6 @@ class PostController extends BaseController
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            foreach ($form->getData()->getTagList() as $key => $value) {
-                $tag = $this->getDoctrine()->getRepository('GeekhubMainBundle:Tag')->findOneBy(['tagName' => $value]);
-                if ($tag == null) {
-                    $tag = new Tag();
-                    $tag->setTagName($value);
-                }
-                $tag->addPost($post);
-                $post->addTag($tag);
-            }
             $this->save($post);
 
             return $this->redirect($this->generateUrl('show_post', ['slug_title' => $post->getSlugTitle()]));

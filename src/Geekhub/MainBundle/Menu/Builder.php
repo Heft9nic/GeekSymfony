@@ -5,7 +5,8 @@ namespace Geekhub\MainBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class Builder {
+class Builder
+{
 
     private $factory;
 
@@ -20,8 +21,8 @@ class Builder {
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root', array(
-            'childrenAttributes'    => array(
-                'id'             => 'menu',
+            'childrenAttributes' => array(
+                'id' => 'menu',
             ),
         ));
         $menu->addChild('Main', array('route' => 'welcome_page'));
