@@ -19,10 +19,6 @@
             <tag name="knp_menu.menu" alias="main"/>
         </service>
 
-        <service id="geekhub.db_worker" class="Geekhub\MainBundle\Services\DbWorkerService">
-            <argument type="service" id="doctrine.orm.entity_manager"/>
-        </service>
-
         <service id="geekhub.form.type.comment" class="Geekhub\MainBundle\Form\Type\CommentType">
         </service>
 

@@ -2,15 +2,14 @@
 
 namespace Geekhub\MainBundle\Controller;
 
+use Geekhub\BaseBundle\Controller\BaseController;
 use Geekhub\MainBundle\Entity\Comment;
 use Geekhub\MainBundle\Entity\Post;
 use Geekhub\MainBundle\Entity\Tag;
-use Geekhub\MainBundle\Form\Type\CommentType;
 use Geekhub\MainBundle\Form\Type\PostType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     /**
      * Show all posts of application
@@ -45,7 +44,7 @@ class PostController extends Controller
                 $tag->addPost($post);
                 $post->addTag($tag);
             }
-            $this->get('geekhub.db_worker')->simpleCommit($post, true);
+            $this->save($post);
 
             return $this->redirect($this->generateUrl('show_post', ['slug_title' => $post->getSlugTitle()]));
         }
@@ -66,7 +65,7 @@ class PostController extends Controller
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $this->get('geekhub.db_worker')->simpleCommit($post, true);
+            $this->save($post);
 
             return $this->redirect($this->generateUrl('show_post', ['slug_title' => $post->getSlugTitle()]));
         }
@@ -89,7 +88,7 @@ class PostController extends Controller
         $commentForm->handleRequest($request);
         if ($commentForm->isValid()) {
             $comment->setPost($post);
-            $this->get('geekhub.db_worker')->simpleCommit($comment, true);
+            $this->save($comment);
         }
 
         return $this->render('GeekhubMainBundle:Post:show.html.twig', ['post' => $post, 'form' => $commentForm->createView()]);
