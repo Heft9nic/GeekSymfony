@@ -64,11 +64,6 @@ class Post
      */
     private $tags;
 
-    /**
-     * @var
-     */
-    private $tagList;
-
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -163,7 +158,7 @@ class Post
      */
     public function addTag(Tag $tag)
     {
-        $this->tags[] = $tag;
+        $this->tags->add($tag);
 
         return $this;
     }
@@ -194,24 +189,4 @@ class Post
     {
         return $this->slug_title;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getTagList()
-    {
-        return $this->tagList;
-    }
-
-    /**
-     * @param $tagList
-     * @return $this
-     */
-    public function setTagList($tagList)
-    {
-        $this->tagList = $tagList;
-
-        return $this;
-    }
-
 }

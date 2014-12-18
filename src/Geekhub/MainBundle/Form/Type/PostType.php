@@ -2,7 +2,6 @@
 
 namespace Geekhub\MainBundle\Form\Type;
 
-use Doctrine\ORM\EntityRepository;
 use Geekhub\MainBundle\Repository\TagRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -39,6 +38,7 @@ class PostType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'Geekhub\MainBundle\Entity\Post',
+            'cascade_validation' => true,
         ]);
     }
 

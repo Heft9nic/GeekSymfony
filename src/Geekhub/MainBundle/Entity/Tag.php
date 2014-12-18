@@ -5,12 +5,12 @@ namespace Geekhub\MainBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Table(name="geekhub_tags")
- * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Repository\TagRepository")
- */
-class Tag
-{
+    /**
+     * @ORM\Table(name="geekhub_tags")
+     * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Repository\TagRepository")
+     */
+    class Tag
+    {
 
     /**
      * @ORM\Column(name="id", type="integer")
@@ -73,7 +73,7 @@ class Tag
      */
     public function addPost(Post $post)
     {
-        $this->posts[] = $post;
+        $this->posts->add($post);
 
         return $this;
     }
