@@ -17,7 +17,27 @@
             <tag name="knp_menu.menu" alias="main"/>
         </service>
 
-        <service id="geekhub.form.type.comment" class="Geekhub\MainBundle\Form\Type\CommentType">
+        <service id="geekhub.form.type.comment" class="Geekhub\MainBundle\Form\Type\CommentType" />
+
+        <service id="geekhub.tag_repository"
+                 class="Geekhub\MainBundle\Repository\TagRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>GeekhubMainBundle:Tag</argument>
+        </service>
+
+        <service id="geekhub.post_repository"
+                 class="Geekhub\MainBundle\Repository\PostRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>GeekhubMainBundle:Post</argument>
+        </service>
+
+        <service id="geekhub.comment_repository"
+                 class="Geekhub\MainBundle\Repository\CommentRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>GeekhubMainBundle:Comment</argument>
         </service>
 
     </services>

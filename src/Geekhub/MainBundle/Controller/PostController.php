@@ -17,7 +17,7 @@ class PostController extends BaseController
      */
     public function indexAction()
     {
-        $posts = $this->getDoctrine()->getRepository('GeekhubMainBundle:Post')->findBy([], ['id' => 'DESC']);
+        $posts = $this->get('geekhub.post_repository')->findBy([], ['id' => 'DESC']);
 
         return $this->render('GeekhubMainBundle:Post:index.html.twig', ['posts' => $posts]);
     }
@@ -49,7 +49,7 @@ class PostController extends BaseController
      */
     public function updateAction($slug_title, Request $request)
     {
-        $post = $this->getDoctrine()->getRepository('GeekhubMainBundle:Post')->findOneBy(['slug_title' => $slug_title]);
+        $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slug_title]);
         $form = $this->createForm(new PostType(), $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -70,7 +70,7 @@ class PostController extends BaseController
      */
     public function showAction(Request $request, $slug_title)
     {
-        $post = $this->getDoctrine()->getRepository('GeekhubMainBundle:Post')->findOneBy(['slug_title' => $slug_title]);
+        $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slug_title]);
         $comment = new Comment();
         $commentForm = $this->createForm($this->get('geekhub.form.type.comment'), $comment);
         $commentForm->handleRequest($request);

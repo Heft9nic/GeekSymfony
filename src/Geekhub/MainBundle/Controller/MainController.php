@@ -13,8 +13,8 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        $lastPosts = $this->getDoctrine()->getRepository('GeekhubMainBundle:Post')->findLatest(5);
-        $lastComments = $this->getDoctrine()->getRepository('GeekhubMainBundle:Comment')->findLatest(5);
+        $lastPosts = $this->get('geekhub.post_repository')->findLatest(5);
+        $lastComments = $this->get('geekhub.comment_repository')->findLatest(5);
 
         return $this->render('GeekhubMainBundle:Main:index.html.twig', ['posts' => $lastPosts, 'comments' => $lastComments]);
     }
@@ -47,7 +47,7 @@ class MainController extends Controller
      */
     public function testTwigAction()
     {
-        $comments = $this->getDoctrine()->getRepository('GeekhubMainBundle:Comment')->findAll();
+        $comments = get('geekhub.comment_repository')->findAll();
 
         return $this->render('GeekhubMainBundle:Main:testTwig.html.twig', ['comments' => $comments]);
     }
