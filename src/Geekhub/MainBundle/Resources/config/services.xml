@@ -4,9 +4,7 @@
 
     <services>
 
-        <service id="my_simple_service" class="Geekhub\MainBundle\Services\SimpleService">
-            <argument type="service" id="request_stack"/>
-        </service>
+        <service id="my_simple_service" class="Geekhub\MainBundle\Services\SimpleService" />
 
         <service id="geekhub.menu_builder" class="Geekhub\MainBundle\Menu\Builder">
             <argument type="service" id="knp_menu.factory"/>
