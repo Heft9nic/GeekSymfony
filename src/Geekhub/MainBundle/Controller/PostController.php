@@ -29,7 +29,7 @@ class PostController extends BaseController
     public function createAction(Request $request)
     {
         $post = new Post();
-        $form = $this->createForm(new PostType(), $post);
+        $form = $this->createForm('post', $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $this->save($post);
@@ -50,7 +50,7 @@ class PostController extends BaseController
     public function updateAction($slug_title, Request $request)
     {
         $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slug_title]);
-        $form = $this->createForm(new PostType(), $post);
+        $form = $this->createForm('post', $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $this->save($post);
@@ -72,7 +72,7 @@ class PostController extends BaseController
     {
         $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slug_title]);
         $comment = new Comment();
-        $commentForm = $this->createForm($this->get('geekhub.form.type.comment'), $comment);
+        $commentForm = $this->createForm('comment', $comment);
         $commentForm->handleRequest($request);
         if ($commentForm->isValid()) {
             $comment->setPost($post);
