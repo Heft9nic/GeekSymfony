@@ -1,0 +1,12 @@
+menu:
+    main: Головна
+    posts: Записи(Робота з Doctrine)
+    twig: Twig(Приклади Twig)
+    many_to_many: Many-To-Many(self_referencing відношення)
+
+create:
+    post: Додати запис
+    tag: Додати тег
+    comment: Додати коментар
+
+read_more: Читати далі
