@@ -4,6 +4,7 @@ Geekhub\MainBundle\Entity\Tag:
         posts: [@post0, @post1]
     tag1:
         tagName: fun
+        enabled:
         posts: [@post2]
 
 Geekhub\MainBundle\Entity\Post:

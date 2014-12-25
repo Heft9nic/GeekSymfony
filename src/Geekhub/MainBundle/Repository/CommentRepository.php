@@ -1,6 +1,6 @@
 <?php
 
-namespace Geekhub\MainBundle\Entity;
+namespace Geekhub\MainBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;

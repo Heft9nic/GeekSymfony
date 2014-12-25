@@ -3,9 +3,49 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="my_simple_service" class="Geekhub\MainBundle\Services\SimpleService">
-            <argument type="service" id="request_stack"/>
+
+        <service id="my_simple_service" class="Geekhub\MainBundle\Services\SimpleService" />
+
+        <service id="geekhub.menu_builder" class="Geekhub\MainBundle\Menu\Builder">
+            <argument type="service" id="knp_menu.factory"/>
         </service>
+
+        <service id="geekhub.menu.main" class="Knp\Menu\MenuItem"
+                 factory-service="geekhub.menu_builder"
+                 factory-method="createMainMenu" scope="request">
+            <argument type="service" id="request"/>
+            <tag name="knp_menu.menu" alias="main"/>
+        </service>
+
+        <service id="geekhub.form.type.comment" class="Geekhub\MainBundle\Form\Type\CommentType">
+            <tag name="form.type" alias="comment" />
+        </service>
+
+        <service id="geekhub.form.type.post" class="Geekhub\MainBundle\Form\Type\PostType">
+            <tag name="form.type" alias="post" />
+        </service>
+
+        <service id="geekhub.tag_repository"
+                 class="Geekhub\MainBundle\Repository\TagRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>GeekhubMainBundle:Tag</argument>
+        </service>
+
+        <service id="geekhub.post_repository"
+                 class="Geekhub\MainBundle\Repository\PostRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>GeekhubMainBundle:Post</argument>
+        </service>
+
+        <service id="geekhub.comment_repository"
+                 class="Geekhub\MainBundle\Repository\CommentRepository"
+                 factory-service="doctrine.orm.entity_manager"
+                 factory-method="getRepository">
+            <argument>GeekhubMainBundle:Comment</argument>
+        </service>
+
     </services>
 
 </container>

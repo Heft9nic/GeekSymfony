@@ -5,14 +5,12 @@ namespace Geekhub\MainBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Tag Entity
- *
- * @ORM\Table(name="geekhub_tags")
- * @ORM\Entity
- */
-class Tag
-{
+    /**
+     * @ORM\Table(name="geekhub_tags")
+     * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Repository\TagRepository")
+     */
+    class Tag
+    {
 
     /**
      * @ORM\Column(name="id", type="integer")
@@ -25,6 +23,11 @@ class Tag
      * @ORM\Column(name="tagName", type="string", length=255)
      */
     private $tagName;
+
+    /**
+     * @ORM\Column(name="enabled", type="integer", length=4)
+     */
+    private $enabled = 0;
 
     /**
      * @ORM\ManyToMany(targetEntity="Post", inversedBy="tags", cascade={"persist"})
@@ -70,7 +73,7 @@ class Tag
      */
     public function addPost(Post $post)
     {
-        $this->posts[] = $post;
+        $this->posts->add($post);
 
         return $this;
     }
@@ -81,5 +84,20 @@ class Tag
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setEnabled()
+    {
+        $this->enabled = 1;
+
+        return $this;
+    }
+
+    public function isEnabled()
+    {
+        return $this->enabled;
     }
 }

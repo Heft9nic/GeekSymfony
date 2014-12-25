@@ -1,9 +1,11 @@
 Geekhub\MainBundle\Entity\Tag:
     tag0:
         tagName: pets
+        enabled:
         posts: [@post4, @post5]
     tag1:
         tagName: science
+        enabled:
         posts: [@post3, @post5]
 
 Geekhub\MainBundle\Entity\Post:

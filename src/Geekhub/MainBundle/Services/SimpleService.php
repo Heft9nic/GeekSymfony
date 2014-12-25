@@ -2,22 +2,15 @@
 
 namespace Geekhub\MainBundle\Services;
 
-use Symfony\Component\HttpFoundation\RequestStack;
-
 class SimpleService
 {
-    private $requestStack;
-
-    public function __construct(RequestStack $requestStack)
-    {
-        $this->requestStack = $requestStack;
-    }
 
     /**
+     * @param $name
      * @return string
      */
-    public function returnServiceName()
+    public function returnServiceName($name)
     {
-        return 'My First Service in work with argument from URL - ' . $this->requestStack->getCurrentRequest()->get('name');
+        return 'My First Service in work with argument from URL - ' . $name;
     }
 }
