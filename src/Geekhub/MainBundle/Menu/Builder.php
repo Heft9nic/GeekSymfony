@@ -25,10 +25,10 @@ class Builder
                 'id' => 'menu',
             ),
         ));
-        $menu->addChild('Main', array('route' => 'welcome_page'));
-        $menu->addChild('Posts(Doctrine)', array('route' => 'posts_index'));
-        $menu->addChild('Twig(Twig Examples)', array('route' => 'test_twig'));
-        $menu->addChild('ManyToMany(self_referencing)', array('route' => 'many_to_many'));
+        $menu->addChild('menu.main', array('route' => 'welcome_page'))->setExtra('translation_domain', 'messages');
+        $menu->addChild('menu.posts', array('route' => 'posts_index'))->setExtra('translation_domain', 'messages');
+        $menu->addChild('menu.twig', array('route' => 'test_twig'))->setExtra('translation_domain', 'messages');
+        $menu->addChild('menu.many_to_many', array('route' => 'many_to_many'))->setExtra('translation_domain', 'messages');
 
         return $menu;
     }
