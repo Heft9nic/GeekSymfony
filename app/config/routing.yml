@@ -1,3 +1,5 @@
 geekhub_main:
    resource: "@GeekhubMainBundle/Resources/config/routing.yml"
-   prefix:   /
+   prefix:   /{_locale}/
+   requirements:
+      _locale: en|uk
