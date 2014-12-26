@@ -3,6 +3,7 @@
 namespace Geekhub\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends Controller
 {
@@ -47,7 +48,7 @@ class MainController extends Controller
      */
     public function testTwigAction()
     {
-        $comments = get('geekhub.comment_repository')->findAll();
+        $comments = $this->get('geekhub.comment_repository')->findAll();
 
         return $this->render('GeekhubMainBundle:Main:testTwig.html.twig', ['comments' => $comments]);
     }
@@ -61,5 +62,17 @@ class MainController extends Controller
         $details = $this->getDoctrine()->getRepository('GeekhubMainBundle:Detail')->findAll();
 
         return $this->render('GeekhubMainBundle:Main:many_to_many.html.twig', ['details' => $details]);
+    }
+
+    /**
+     * Simple translation in controller by using the translator service
+     *
+     * @return Response
+     */
+    public function simpleTranslationAction()
+    {
+        $translation = $this->get('translator')->trans('test_translation');
+
+        return new Response($translation);
     }
 }

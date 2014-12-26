@@ -11,6 +11,10 @@ test_twig:
     path: /twig
     defaults: { _controller: GeekhubMainBundle:Main:testTwig }
 
+simple_translation:
+    path: /simple-translation
+    defaults: { _controller: GeekhubMainBundle:Main:simpleTranslation }
+
 many_to_many:
     path: /many_to_many
     defaults: { _controller: GeekhubMainBundle:Main:manyToMany }
