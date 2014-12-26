@@ -22,6 +22,7 @@ class Post
     private $id;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(name="title", type="string", length=255)
      * @Assert\NotBlank(message="Title value should not be blank")
      * @Assert\Length(min=8, minMessage = "This value should be longer than 8 chars")
@@ -53,6 +54,11 @@ class Post
      * @ORM\Column(type="datetime")
      */
     protected $updatedAt;
+
+    /**
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"persist"})
@@ -188,5 +194,13 @@ class Post
     public function getSlugTitle()
     {
         return $this->slug_title;
+    }
+
+    /**
+     * @param $locale
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }
