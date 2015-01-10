@@ -32,7 +32,7 @@ class MainController extends Controller
             'geek' => 'team',
         ];
         $serviceResult = $this->get('my_simple_service')->returnServiceName($name);
-        $time = time();
+        $time = new \DateTime();
 
         return $this->render('GeekhubMainBundle:Main:first.html.twig', [
             'name' => $name,
