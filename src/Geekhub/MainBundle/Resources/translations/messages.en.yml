@@ -12,3 +12,8 @@ create:
 read_more: Read more
 
 test_translation: Test translation
+
+form:
+    title: Title
+    content: Content
+    tags: Tags

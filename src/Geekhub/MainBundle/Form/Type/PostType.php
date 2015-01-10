@@ -15,10 +15,10 @@ class PostType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', 'text', ['label' => 'Title'])
-            ->add('content', 'textarea', ['label' => 'Content'])
+        $builder->add('title', 'text', ['label' => 'form.title'])
+            ->add('content', 'textarea', ['label' => 'form.content'])
             ->add('tags', 'entity', array(
-                    'label' => 'Tags',
+                    'label' => 'form.tags',
                     'class' => 'GeekhubMainBundle:Tag',
                     'property' => 'tagName',
                     'empty_value' => 'Choose a tag',

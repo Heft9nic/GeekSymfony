@@ -12,3 +12,8 @@ create:
 read_more: Читати далі
 
 test_translation: Тестовий переклад
+
+form:
+    title: Заголовок
+    content: Контент
+    tags: Теги
