@@ -4,13 +4,14 @@ namespace Geekhub\MainBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
-    /**
-     * @ORM\Table(name="geekhub_tags")
-     * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Repository\TagRepository")
-     */
-    class Tag
-    {
+/**
+ * @ORM\Table(name="geekhub_tags")
+ * @ORM\Entity(repositoryClass="Geekhub\MainBundle\Repository\TagRepository")
+ */
+class Tag
+{
 
     /**
      * @ORM\Column(name="id", type="integer")
@@ -20,6 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
     private $id;
 
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(name="tagName", type="string", length=255)
      */
     private $tagName;
@@ -28,6 +30,11 @@ use Doctrine\ORM\Mapping as ORM;
      * @ORM\Column(name="enabled", type="integer", length=4)
      */
     private $enabled = 0;
+
+    /**
+     * @Gedmo\Locale
+     */
+    private $locale;
 
     /**
      * @ORM\ManyToMany(targetEntity="Post", inversedBy="tags", cascade={"persist"})
@@ -96,8 +103,19 @@ use Doctrine\ORM\Mapping as ORM;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function isEnabled()
     {
         return $this->enabled;
+    }
+
+    /**
+     * @param $locale
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

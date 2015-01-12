@@ -17,7 +17,7 @@ class PostController extends BaseController
      */
     public function indexAction()
     {
-        $posts = $this->get('geekhub.post_repository')->findBy([], ['id' => 'DESC']);
+        $posts = $this->get('geekhub.post_repository')->findBy([], ['createdAt' => 'DESC']);
 
         return $this->render('GeekhubMainBundle:Post:index.html.twig', ['posts' => $posts]);
     }
@@ -44,12 +44,12 @@ class PostController extends BaseController
      * Update post by slug
      *
      * @param Request $request
-     * @param $slug_title
+     * @param $slugTitle
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function updateAction($slug_title, Request $request)
+    public function updateAction($slugTitle, Request $request)
     {
-        $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slug_title]);
+        $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slugTitle]);
         $form = $this->createForm('post', $post);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -65,12 +65,12 @@ class PostController extends BaseController
      * Show specific post by Id
      *
      * @param Request $request
-     * @param $slug_title
+     * @param $slugTitle
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Request $request, $slug_title)
+    public function showAction(Request $request, $slugTitle)
     {
-        $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slug_title]);
+        $post = $this->get('geekhub.post_repository')->findOneBy(['slug_title' => $slugTitle]);
         $comment = new Comment();
         $commentForm = $this->createForm('comment', $comment);
         $commentForm->handleRequest($request);

@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -62,19 +62,28 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        mappings:
+            gedmo_translatable:
+                type: annotation
+                prefix: Gedmo\Translatable\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                is_bundle: false
 
 # StofDoctrineExtensions bundle default configuration
 stof_doctrine_extensions:
     default_locale: en_US
+    translation_fallback: true
     orm:
         default:
             tree: true
-            timestampable: true # not needed: listeners are not enabled by default
+            timestampable: true
+            translatable: true
 
 # Default configuration for KnpMenuBundle
 knp_menu:
     twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
-        template: knp_menu.html.twig
+        template: GeekhubMainBundle:Main:knp_menu.html.twig
     templating: false # if true, enables the helper for PHP templates
     default_renderer: twig # The renderer to use, list is also available by default
 

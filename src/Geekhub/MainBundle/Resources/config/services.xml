@@ -29,21 +29,21 @@
                  class="Geekhub\MainBundle\Repository\TagRepository"
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
-            <argument>GeekhubMainBundle:Tag</argument>
+            <argument>Geekhub\MainBundle\Entity\Tag</argument>
         </service>
 
         <service id="geekhub.post_repository"
                  class="Geekhub\MainBundle\Repository\PostRepository"
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
-            <argument>GeekhubMainBundle:Post</argument>
+            <argument>Geekhub\MainBundle\Entity\Post</argument>
         </service>
 
         <service id="geekhub.comment_repository"
                  class="Geekhub\MainBundle\Repository\CommentRepository"
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
-            <argument>GeekhubMainBundle:Comment</argument>
+            <argument>Geekhub\MainBundle\Entity\Comment</argument>
         </service>
 
     </services>
